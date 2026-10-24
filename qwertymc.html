@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050914">
+<title>QWERTYMC — Serwer Minecraft</title>
+<style>
+:root {
+  --bg: #050914;
+  --panel: #0a1325;
+  --blue: #00baff;
+  --cyan: #00e5ff;
+  --text: #edf7ff;
+  --muted: #a3b6ce;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 50% 0%, #063b7455, transparent 50%),
+    var(--bg);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #050914ee;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #087db7;
+}
+nav {
+  max-width: 1250px;
+  min-height: 72px;
+  margin: auto;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo {
+  font-weight: 1000;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  text-shadow: 0 0 20px #00baff55;
+  white-space: nowrap;
+}
+.navlinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 23px;
+  font-size: 14px;
+}
+.navlinks a { color: #d3e9ff; }
+.navlinks a:hover { color: var(--cyan); }
+.online {
+  color: #58f5ad;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.hero {
+  max-width: 1250px;
+  margin: auto;
+  padding: 65px 22px 45px;
+  display: grid;
+  grid-template-columns: 1.5fr .8fr;
+  align-items: center;
+  gap: 40px;
+}
+.eyebrow {
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 800;
+}
+h1 {
+  margin: 12px 0 22px;
+  font-size: clamp(44px, 7vw, 82px);
+  line-height: .98;
+  letter-spacing: -3px;
+}
+h1 span {
+  color: var(--cyan);
+  text-shadow: 0 0 32px #00baff4d;
+}
+.server-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.info {
+  border: 1px solid #087bb5;
+  background: #07162a;
+  padding: 13px 16px;
+  border-radius: 10px;
+  min-width: 145px;
+}
+.info small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.info strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.copy-btn {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border: 1px solid var(--blue);
+  color: var(--cyan);
+  background: #07182a;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.copy-btn:hover { background: #0c2b45; }
+.warning {
+  border: 1px solid var(--blue);
+  border-radius: 15px;
+  padding: 26px;
+  background: linear-gradient(145deg, #0d1e36, #080d19);
+  box-shadow: 0 0 40px #007bff14;
+}
+.warning h2 { margin: 0 0 14px; font-size: 22px; }
+.warning p { color: #c4d7ec; line-height: 1.8; margin-bottom: 0; }
+.warning strong { color: var(--cyan); }
+.discord-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 17px;
+  background: #087bbd;
+  border-radius: 8px;
+  font-weight: 800;
+}
+.discord-btn:hover { background: #079cde; }
+.section {
+  max-width: 1250px;
+  margin: 0 auto 18px;
+  padding: 28px;
+  border: 1px solid #087bb5;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #071120eF, #050a15f5);
+  box-shadow: 0 0 25px #008cff09;
+  scroll-margin-top: 90px;
+}
+.section-title {
+  font-size: 30px;
+  margin: 0 0 24px;
+}
+.section-title span { color: var(--cyan); }
+.keys, .ranks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.key-card, .rank-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--tint), #050914 75%);
+  padding: 23px;
+  transition: transform .2s, box-shadow .2s;
+}
+.key-card:hover, .rank-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--glow);
+}
+.epic {
+  --accent: #c05cff;
+  --tint: #37105b50;
+  --glow: #b74cff22;
+}
+.legendary {
+  --accent: #ffc928;
+  --tint: #5a400e45;
+  --glow: #ffc92820;
+}
+.anarchy {
+  --accent: #ff456b;
+  --tint: #590d2645;
+  --glow: #ff456b20;
+}
+.vip {
+  --accent: #ffd229;
+  --tint: #4c3b0845;
+  --glow: #ffd22920;
+}
+.elite {
+  --accent: #c05cff;
+  --tint: #38105245;
+  --glow: #c05cff20;
+}
+.sponsor {
+  --accent: #00c9ff;
+  --tint: #003e5945;
+  --glow: #00c9ff20;
+}
+.key-card h3, .rank-card h3 {
+  color: var(--accent);
+  margin: 0 0 14px;
+  font-size: 21px;
+}
+.key-card .symbol {
+  font-size: 35px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  text-shadow: 0 0 18px var(--glow);
+}
+.price {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+}
+.rank-card {
+  padding: 25px 23px;
+  display: flex;
+  flex-direction: column;
+}
+.rank-card h3 { font-size: 23px; }
+.rank-label {
+  font-weight: 800;
+  margin: 5px 0 10px;
+}
+.perks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+.perks li {
+  color: #d1e2f4;
+  margin: 11px 0;
+  line-height: 1.45;
+  font-size: 14px;
+}
+.perks li::before {
+  content: "✓";
+  color: var(--accent);
+  font-weight: 900;
+  margin-right: 10px;
+}
+.price-title {
+  margin-top: 20px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 12px;
+}
+.price-option {
+  padding: 12px 7px;
+  text-align: center;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: white;
+}
+.notice {
+  margin-top: 24px;
+  border-left: 3px solid var(--blue);
+  padding: 15px 18px;
+  background: #071a2b;
+  color: #c5ddf4;
+  line-height: 1.7;
+}
+footer {
+  padding: 35px 20px;
+  margin-top: 35px;
+  border-top: 1px solid #14344f;
+  text-align: center;
+  color: #8ba7c3;
+  font-size: 13px;
+}
+footer strong { color: var(--cyan); }
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; padding-top: 45px; }
+  .keys, .ranks { grid-template-columns: 1fr; }
+  .navlinks { gap: 12px; }
+  .section { margin-left: 12px; margin-right: 12px; padding: 20px; }
+}
+@media (max-width: 520px) {
+  nav { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .navlinks { font-size: 13px; }
+  .online { display: none; }
+  h1 { letter-spacing: -2px; }
+  .prices { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="#start">♛ QWERTYMC</a>
+    <div class="navlinks">
+      <a href="#start">Strona główna</a>
+      <a href="#rangi">Rangi</a>
+      <a href="#klucze">Klucze</a>
+      <a href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer">Discord</a>
+    </div>
+    <div class="online">● SERWER MINECRAFT</div>
+  </nav>
+</header>
+
+<main id="start">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Twoja przygoda zaczyna się tutaj</div>
+      <h1>Witaj na<br><span>qwertymc!</span></h1>
+
+      <div class="server-info">
+        <div class="info">
+          <small>Adres serwera</small>
+          <strong>qwertymcpl.aternos.me</strong>
+        </div>
+        <div class="info">
+          <small>Wersja Minecraft</small>
+          <strong>1.21.4</strong>
+        </div>
+      </div>
+
+      <button class="copy-btn" id="copyAddress" type="button">
+        Kopiuj adres serwera
+      </button>
+      <div id="copyStatus" role="status" aria-live="polite"></div>
+    </div>
+
+    <aside class="warning">
+      <h2>⚠ Kupno rangi</h2>
+      <p>
+        <strong>UWAGA!</strong> Jeśli chcesz kupić rangę,
+        utwórz ticket na Discordzie.
+      </p>
+      <a class="discord-btn" href="https://discord.gg/mRmsYtuV3n"
+         target="_blank" rel="noopener noreferrer">
+        Otwórz Discord →
+      </a>
+    </aside>
+  </section>
+
+  <section class="section" id="klucze">
+    <h2 class="section-title"><span>⚿</span> Klucze</h2>
+    <div class="keys">
+      <article class="key-card epic">
+        <div class="symbol">🗝</div>
+        <h3>Klucz epicki</h3>
+        <div class="price">10k</div>
+      </article>
+
+      <article class="key-card legendary">
+        <div class="symbol">🗝</div>
+        <h3>Klucz legendarny</h3>
+        <div class="price">40</div>
+      </article>
+
+      <article class="key-card anarchy">
+        <div class="symbol">🗝</div>
+        <h3>Klucz anarchiczny</h3>
+        <div class="price">80k</div>
+      </article>
+    </div>
+    <div class="notice">
+      Ceny kluczy podano zgodnie z przekazanymi informacjami.
+      Jeśli są to ceny w walucie serwerowej, możesz dopisać jej nazwę.
+    </div>
+  </section>
+
+  <section class="section" id="rangi">
+    <h2 class="section-title"><span>♛</span> Rangi</h2>
+    <div class="ranks">
+
+      <article class="rank-card vip">
+        <h3>♛ RANGA VIP</h3>
+        <div class="rank-label">Przywileje:</div>
+        <ul class="perks">
+          <li>Żółty nick na tabie i na czacie</li>
+          <li>Dostęp do <strong>/kit</strong></li>
+        </ul>
+        <div class="price-title">Cena:</div>
+        <div class="prices">
+          <div class="price-option">30 dni: 5 zł</div>
+          <div class="price-option">356 dni: 10 zł</div>
+        </div>
+      </article>
+
+      <article class="rank-card elite">
+        <h3>♛ RANGA ELITA</h3>
+        <div class="rank-label">Przywileje:</div>
+        <ul class="perks">
+          <li>Zestaw elita</li>
+          <li>Fioletowy nick na tabie i na czacie</li>
+          <li>Dostęp do <strong>/ec</strong></li>
+        </ul>
+        <div class="price-title">Cena:</div>
+        <div class="prices">
+          <div class="price-option">30 dni: 10 zł</div>
+          <div class="price-option">356 dni: 30 zł</div>
+        </div>
+      </article>
+
+      <article class="rank-card sponsor">
+        <h3>♛ RANGA SPONSOR</h3>
+        <div class="rank-label">Przywileje:</div>
+        <ul class="perks">
+          <li>Najlepszy kit</li>
+          <li>Niebieski nick na czacie i na tabie</li>
+          <li>Dostęp do <strong>/ec</strong></li>
+          <li>Możliwość uzyskania przysługi od admina</li>
+        </ul>
+        <div class="price-title">Cena:</div>
+        <div class="prices">
+          <div class="price-option">30 dni: 20 zł</div>
+          <div class="price-option">356 dni: 50 zł</div>
+        </div>
+      </article>
+
+    </div>
+    <div class="notice">
+      <strong>Jak kupić rangę?</strong><br>
+      Wejdź na Discord serwera i utwórz ticket.
+      Ustal szczegóły zakupu z administracją.
+      <br>
+      <a href="https://discord.gg/mRmsYtuV3n"
+         target="_blank" rel="noopener noreferrer"
+         style="color:#00e5ff;font-weight:800">
+        Przejdź na Discord →
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>QWERTYMC</strong> · Minecraft 1.21.4<br>
+  Dołącz do społeczności i rozpocznij swoją przygodę!
+</footer>
+
+<script>
+const copyButton = document.getElementById("copyAddress");
+const copyStatus = document.getElementById("copyStatus");
+
+copyButton.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText("qwertymcpl.aternos.me");
+    copyStatus.textContent = "Adres serwera skopiowany!";
+  } catch {
+    copyStatus.textContent = "Adres serwera: qwertymcpl.aternos.me";
+  }
+  copyStatus.style.cssText =
+    "margin-top:10px;color:#00e5ff;font-size:13px";
+});
+</script>
+</body>
+</html>
