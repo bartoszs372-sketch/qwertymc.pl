@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QWERTYMC — polski serwer Minecraft 1.21.4</title>
+  <meta name="description" content="QWERTYMC to polski serwer Minecraft w wersji 1.21.4. IP: qwertymcpl.aternos.me. Sprawdź rangi, klucze, zestawy i regulamin.">
+  <meta name="theme-color" content="#0b0c0e">
+  <meta property="og:title" content="QWERTYMC — polski serwer Minecraft">
+  <meta property="og:description" content="Minecraft 1.21.4 · qwertymcpl.aternos.me · Rangi, klucze, zestawy i regulamin.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- Ikony -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-discord" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" d="M5.5 5.3C7.4 4.4 9.6 4 12 4s4.6.4 6.5 1.3c1.8 2.7 2.7 5.8 2.6 9.8-1.6 1.4-3.2 2.2-4.8 2.8l-1-1.8c.5-.2 1-.4 1.5-.7l-.3-.3c-3.2 1.4-6.3 1.4-9.4 0l-.3.3c.5.3 1 .5 1.5.7l-1 1.8c-1.6-.6-3.2-1.4-4.8-2.8-.1-4 .8-7.100 2.600-9.800zM9.200 10.200a1.600 1.800 0 100 3.600 1.600 1.800 0 000-3.600zm5.600 0a1.600 1.800 0 100 3.600 1.600 1.800 0 000-3.600z"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="11" height="11" rx="2.2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M5 15V6.2C5 5.5 5.5 5 6.2 5H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="10.500" cy="10.500" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M15 15l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-key" viewBox="0 0 12 8">
+      <path fill="currentColor" d="M1 1h3v1H1zM0 2h1v3H0zM4 2h1v3H4zM1 5h3v1H1zM5 3h7v1H5zM8 4h1v2H8zM10 4h1v1h-1z"/>
+    </symbol>
+    <symbol id="i-gem" viewBox="0 0 8 8">
+      <path fill="currentColor" d="M3 0h2v1H3zM2 1h4v1H2zM1 2h6v1H1zM0 3h8v2H0zM1 5h6v1H1zM2 6h4v1H2zM3 7h2v1H3z"/>
+      <path fill="#fff" opacity=".4" d="M2 1h1v2H2z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<!-- NAWIGACJA -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#start" aria-label="QWERTYMC — na górę strony">
+      <span class="brand-key" aria-hidden="true">Q</span>
+      <span class="brand-name">QWERTYMC</span>
+    </a>
+    <nav aria-label="Główna nawigacja">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#start" data-spy="start">Start</a></li>
+        <li><a href="#rangi" data-spy="rangi">Rangi</a></li>
+        <li><a href="#sklep" data-spy="sklep">Klucze i zestawy</a></li>
+        <li><a href="#regulamin" data-spy="regulamin">Regulamin</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn--ghost btn--sm" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true"><use href="#i-discord"/></svg><span>Discord</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Otwórz menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="start">
+    <canvas id="px-canvas" aria-hidden="true"></canvas>
+
+    <div class="wrap hero-inner">
+      <div class="hero-top">
+        <p class="eyebrow">Polski serwer Minecraft</p>
+        <p class="version" aria-label="Wersja Minecraft 1.21.4"><span>Minecraft</span><b>1.21.4</b></p>
+      </div>
+
+      <div class="stage">
+        <h1 class="logo" aria-label="QWERTYMC">
+          <span class="key" data-k="q" style="--i:0" aria-hidden="true"><span>Q</span></span>
+          <span class="key" data-k="w" style="--i:1" aria-hidden="true"><span>W</span></span>
+          <span class="key" data-k="e" style="--i:2" aria-hidden="true"><span>E</span></span>
+          <span class="key" data-k="r" style="--i:3" aria-hidden="true"><span>R</span></span>
+          <span class="key" data-k="t" style="--i:4" aria-hidden="true"><span>T</span></span>
+          <span class="key" data-k="y" style="--i:5" aria-hidden="true"><span>Y</span></span>
+          <span class="key key--g" data-k="m" style="--i:6" aria-hidden="true"><span>M</span></span>
+          <span class="key key--g" data-k="c" style="--i:7" aria-hidden="true"><span>C</span></span>
+        </h1>
+      </div>
+
+      <div class="hero-body">
+        <div class="hero-copy">
+          <p class="lead">Polski serwer Minecraft w wersji 1.21.4. Wpisz adres, wejdź do gry, a w razie pytań znajdziesz nas na Discordzie.</p>
+          <p class="hint" aria-hidden="true">Podpowiedź: spróbuj wpisać <kbd>QWERTYMC</kbd> na klawiaturze.</p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="ip" type="button" data-copy="qwertymcpl.aternos.me" aria-label="Skopiuj adres IP serwera: qwertymcpl.aternos.me">
+            <span class="ip-face">
+              <span class="ip-text">
+                <span class="ip-label">IP serwera</span>
+                <span class="ip-addr">qwertymcpl.aternos.me</span>
+              </span>
+              <span class="ip-action">
+                <span class="ip-ico">
+                  <svg class="ico-copy" aria-hidden="true"><use href="#i-copy"/></svg>
+                  <svg class="ico-check" viewBox="0 0 24 24" aria-hidden="true"><path class="chk" d="M5 12.500l4.500 4.500L19 7.500" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="ip-action-text" data-idle="Kopiuj" data-done="Skopiowano">Kopiuj</span>
+              </span>
+            </span>
+          </button>
+
+          <a class="btn btn--ghost btn--wide" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#i-discord"/></svg>
+            <span>Dołącz na Discorda</span>
+            <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="terrain" aria-hidden="true" preserveAspectRatio="none"></svg>
+  </section>
+
+  <!-- RANGI -->
+  <section class="section ranks" id="rangi">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="kicker"><span>01</span>Rangi</p>
+        <h2>Rangi, które widać na czacie.</h2>
+        <p class="sec-lead">Każda ranga zmienia kolor Twojego nicka na tablicy i czacie oraz odblokowuje dodatkowe komendy.</p>
+      </header>
+
+      <div class="period reveal" id="period" data-value="30" role="radiogroup" aria-label="Okres ważności rangi">
+        <span class="period-thumb" aria-hidden="true"></span>
+        <button type="button" role="radio" aria-checked="true" data-period="30" tabindex="0">30 dni</button>
+        <button type="button" role="radio" aria-checked="false" data-period="356" tabindex="-1">356 dni</button>
+      </div>
+
+      <div class="tiers">
+
+        <article class="tier tier--vip reveal" style="--d:.05s">
+          <h3 class="tier-name">VIP</h3>
+          <div class="mc" aria-label="Podgląd nicku rangi VIP">
+            <p class="mc-line"><span class="mc-lbl">Tablica</span><span class="mc-tab"><b>TwójNick</b></span></p>
+            <p class="mc-line"><span class="mc-lbl">Czat</span><span class="mc-chat">&lt;<b>TwójNick</b>&gt; Cześć!</span></p>
+          </div>
+          <ul class="perks">
+            <li>Żółty nick na tablicy i czacie</li>
+            <li>Dostęp do <code>/kit</code></li>
+          </ul>
+          <div class="tier-buy">
+            <p class="price">
+              <span class="price-num" data-p30="5" data-p356="10">5</span><span class="price-cur">zł</span><span class="price-per">/ 30 dni</span>
+            </p>
+            <p class="price-alt nojs">356 dni: 10 zł</p>
+            <a class="btn btn--tier" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer"><span>Kup przez ticket</span><svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="tier tier--elita reveal" style="--d:.15s">
+          <h3 class="tier-name">ELITA</h3>
+          <div class="mc" aria-label="Podgląd nicku rangi ELITA">
+            <p class="mc-line"><span class="mc-lbl">Tablica</span><span class="mc-tab"><b>TwójNick</b></span></p>
+            <p class="mc-line"><span class="mc-lbl">Czat</span><span class="mc-chat">&lt;<b>TwójNick</b>&gt; Cześć!</span></p>
+          </div>
+          <ul class="perks">
+            <li>Zestaw Elita</li>
+            <li>Fioletowy nick na tablicy i czacie</li>
+            <li>Dostęp do <code>/ec</code></li>
+          </ul>
+          <div class="tier-buy">
+            <p class="price">
+              <span class="price-num" data-p30="10" data-p356="30">10</span><span class="price-cur">zł</span><span class="price-per">/ 30 dni</span>
+            </p>
+            <p class="price-alt nojs">356 dni: 30 zł</p>
+            <a class="btn btn--tier" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer"><span>Kup przez ticket</span><svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="tier tier--sponsor reveal" style="--d:.25s">
+          <p class="tier-flag">Najwyższa ranga</p>
+          <h3 class="tier-name">SPONSOR</h3>
+          <div class="mc" aria-label="Podgląd nicku rangi SPONSOR">
+            <p class="mc-line"><span class="mc-lbl">Tablica</span><span class="mc-tab"><b>TwójNick</b></span></p>
+            <p class="mc-line"><span class="mc-lbl">Czat</span><span class="mc-chat">&lt;<b>TwójNick</b>&gt; Cześć!</span></p>
+          </div>
+          <ul class="perks">
+            <li>Najlepszy kit</li>
+            <li>Niebieski nick na czacie i tablicy</li>
+            <li>Dostęp do <code>/ec</code></li>
+            <li>Możliwość faworki od administratora</li>
+          </ul>
+          <div class="tier-buy">
+            <p class="price">
+              <span class="price-num" data-p30="20" data-p356="50">20</span><span class="price-cur">zł</span><span class="price-per">/ 30 dni</span>
+            </p>
+            <p class="price-alt nojs">356 dni: 50 zł</p>
+            <a class="btn btn--tier" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer"><span>Kup przez ticket</span><svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+      </div>
+
+      <aside class="ticket reveal">
+        <div>
+          <p class="ticket-title">Jak kupić rangę?</p>
+          <p class="ticket-text">Zakup każdej rangi odbywa się przez ticket na Discordzie.</p>
+        </div>
+        <a class="btn btn--solid" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true"><use href="#i-discord"/></svg><span>Otwórz Discorda</span>
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- KLUCZE I ZESTAWY -->
+  <section class="section shop" id="sklep">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="kicker"><span>02</span>Sklep</p>
+        <h2>Klucze i zestawy.</h2>
+        <p class="sec-lead">Aktualna oferta kluczy i zestawów, wyceniona w wirtualnej walucie.</p>
+      </header>
+
+      <div class="shop-grid">
+        <div class="hotbar reveal" role="list" aria-label="Klucze">
+          <article class="slot" role="listitem">
+            <div class="slot-icon"><svg aria-hidden="true" shape-rendering="crispEdges"><use href="#i-key"/></svg><span class="slot-count">10k</span></div>
+            <div class="slot-info">
+              <h3>Klucz</h3>
+              <p class="slot-price"><strong>10k</strong> wirtualnej waluty</p>
+            </div>
+          </article>
+          <article class="slot" role="listitem">
+            <div class="slot-icon"><svg aria-hidden="true" shape-rendering="crispEdges"><use href="#i-key"/></svg><span class="slot-count">40k</span></div>
+            <div class="slot-info">
+              <h3>Klucz</h3>
+              <p class="slot-price"><strong>40k</strong> wirtualnej waluty</p>
+            </div>
+          </article>
+          <article class="slot" role="listitem">
+            <div class="slot-icon"><svg aria-hidden="true" shape-rendering="crispEdges"><use href="#i-key"/></svg><span class="slot-count">80k</span></div>
+            <div class="slot-info">
+              <h3>Klucz</h3>
+              <p class="slot-price"><strong>80k</strong> wirtualnej waluty</p>
+            </div>
+          </article>
+        </div>
+
+        <article class="bundle reveal" style="--d:.12s">
+          <div>
+            <p class="bundle-tag">Zestaw</p>
+            <ul class="rarities">
+              <li class="r r--epic"><svg aria-hidden="true" shape-rendering="crispEdges"><use href="#i-gem"/></svg><b>3</b><span>epickie</span></li>
+              <li class="r r--legend"><svg aria-hidden="true" shape-rendering="crispEdges"><use href="#i-gem"/></svg><b>2</b><span>legendarne</span></li>
+              <li class="r r--anarchic"><svg aria-hidden="true" shape-rendering="crispEdges"><use href="#i-gem"/></svg><b>1</b><span>anarchiczny</span></li>
+            </ul>
+          </div>
+          <p class="bundle-price"><strong>180k</strong><span>wirtualnej waluty</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGULAMIN -->
+  <section class="section rules" id="regulamin">
+    <div class="wrap rules-layout">
+
+      <div class="rules-aside reveal">
+        <p class="kicker"><span>03</span>Regulamin</p>
+        <h2>Zasady gry.</h2>
+        <p class="sec-lead">Wejście na serwer oznacza akceptację regulaminu. Zasady są pogrupowane tematycznie, a numeracja zgodna z oryginałem.</p>
+        <p class="rules-note">Numeracja 1–37. Punkt 5 nie występuje w oryginalnym regulaminie.</p>
+
+        <div class="search">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="rule-search" type="search" placeholder="Szukaj w regulaminie…" aria-label="Szukaj w regulaminie" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="rules-tools">
+          <button class="link-btn" type="button" id="toggle-all">Rozwiń wszystkie</button>
+          <span class="rules-summary" id="rules-summary" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="rules-list reveal" style="--d:.1s">
+
+        <!-- 01 -->
+        <section class="group" id="g-mody">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-mody">
+              <span class="group-idx">01</span>
+              <span class="group-title">Modyfikacje i wspomagacze</span>
+              <span class="group-count">3 punkty</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-mody"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="1">
+                <span class="rule-n">1.</span>
+                <div>
+                  <p>Zabrania się posiadania i używania następujących modyfikacji:</p>
+                  <ul>
+                    <li>cheatów i klientów z cheatami;</li>
+                    <li>moda BetterPvP <span class="note">(z powodu wbudowanej minimapy)</span>;</li>
+                    <li>moda/launchera BlazingPack <span class="note">(ze względu na wbudowany Elytra Swapper)</span>;</li>
+                    <li>minimapy pokazującej pozycję innych graczy <span class="note">(minimapa bez graczy jest dozwolona)</span>;</li>
+                    <li>Elytra Swappera;</li>
+                    <li>texturepacka pokazującego poziom zużycia zestawu (zbroi);</li>
+                    <li>modów umożliwiających otwieranie ekwipunku/GUI podczas biegania lub kucania;</li>
+                    <li>Better Name Visibility <span class="note">(lepsza widoczność nicków przez ściany)</span>;</li>
+                    <li>texturepacka pokazującego ilość przedmiotów przeciwnika;</li>
+                    <li>modów pozwalających na szybsze stawianie bloków;</li>
+                    <li>modów umożliwiających szybsze stawianie kryształów.</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="rule" data-n="2"><span class="rule-n">2.</span><div><p>Zakazuje się używania autoclickera.</p></div></li>
+              <li class="rule" data-n="36"><span class="rule-n">36.</span><div><p>Zabrania się używania wspomagaczy.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 02 -->
+        <section class="group" id="g-walka">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-walka">
+              <span class="group-idx">02</span>
+              <span class="group-title">Walka, trapy i świat gry</span>
+              <span class="group-count">5 punktów</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-walka"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="3"><span class="rule-n">3.</span><div><p>Zakazuje się opuszczania gry w przypadku spadania do voida w Endzie.</p></div></li>
+              <li class="rule" data-n="4">
+                <span class="rule-n">4.</span>
+                <div>
+                  <p>Zakazuje się tworzenia trapów, z których nie da się uciec. Trap nie może znajdować się na spawnie, pod spawnem ani w pobliżu granic sektora/mapy.</p>
+                  <ul>
+                    <li>Zakazuje się leżenia, stania, wystawania hitboxem, altowania i używania petów.</li>
+                    <li>Zakazuje się budowania trapa w 1x1 w kratce bedrocka.</li>
+                    <li>Zakazuje się budowania trapa w portalu do Endu/Netheru.</li>
+                    <li>Zakazuje się robienia mechanizmów w trapach.</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="rule rule--missing" data-n="5"><span class="rule-n">5.</span><div><p>Brak punktu 5 w oryginalnym regulaminie.</p></div></li>
+              <li class="rule" data-n="31"><span class="rule-n">31.</span><div><p>Nie używaj komend podczas walki.</p></div></li>
+              <li class="rule" data-n="33"><span class="rule-n">33.</span><div><p>Zabrania się wchodzenia do Netheru i Endu.</p></div></li>
+              <li class="rule" data-n="35"><span class="rule-n">35.</span><div><p>Zakazuje się przebywania AFK poza spawnem przez minimum 30 minut.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 03 -->
+        <section class="group" id="g-konta">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-konta">
+              <span class="group-idx">03</span>
+              <span class="group-title">Konta, nicki i dane</span>
+              <span class="group-count">4 punkty</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-konta"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="6"><span class="rule-n">6.</span><div><p>Maksymalna liczba kont na serwerze wynosi dwa.</p></div></li>
+              <li class="rule" data-n="8"><span class="rule-n">8.</span><div><p>Zakazuje się udostępniania danych osobowych, wizerunku oraz adresów IP innych użytkowników.</p></div></li>
+              <li class="rule" data-n="19"><span class="rule-n">19.</span><div><p>Zakazuje się ustawiania obraźliwych skinów i nicków, w tym o charakterze rasistowskim, nazistowskim itp.</p></div></li>
+              <li class="rule" data-n="21"><span class="rule-n">21.</span><div><p>Zakazuje się omijania blokad konta poprzez tworzenie lub granie na innych kontach.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 04 -->
+        <section class="group" id="g-gospodarka">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-gospodarka">
+              <span class="group-idx">04</span>
+              <span class="group-title">Błędy, ekonomia i backupy</span>
+              <span class="group-count">6 punktów</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-gospodarka"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="7"><span class="rule-n">7.</span><div><p>Zakazuje się wykorzystywania oraz zatajania błędów serwera.</p></div></li>
+              <li class="rule" data-n="9"><span class="rule-n">9.</span><div><p>Zakazuje się wzbogacania kosztem serwera, w tym sprzedaży lub kupna kont oraz przedmiotów za prawdziwą walutę.</p></div></li>
+              <li class="rule" data-n="14">
+                <span class="rule-n">14.</span>
+                <div>
+                  <p>Zakazuje się dodawania na <code>/rynek</code> przedmiotów, które:</p>
+                  <ul>
+                    <li>wprowadzają graczy w błąd;</li>
+                    <li>łamią regulamin swoją nazwą lub opisem;</li>
+                    <li>służą do kupna lub sprzedaży przedmiotów;</li>
+                    <li>mają zawyżoną cenę;</li>
+                    <li>są wykorzystywane do oszustw.</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="rule" data-n="29"><span class="rule-n">29.</span><div><p>Kopie zapasowe (backupy) wygasają po 5 dniach od śmierci postaci. Po ich wygaśnięciu, jeśli nie jest to wina administracji, nie ma możliwości ich odzyskania.</p></div></li>
+              <li class="rule" data-n="30"><span class="rule-n">30.</span><div><p>Zabrania się kopiowania itemów.</p></div></li>
+              <li class="rule" data-n="32"><span class="rule-n">32.</span><div><p>Zakazuje się zdobywania pieniędzy oraz itemów w nielegalny sposób, np. poprzez błędy i luki w kodzie.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 05 -->
+        <section class="group" id="g-czat">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-czat">
+              <span class="group-idx">05</span>
+              <span class="group-title">Czat i kultura</span>
+              <span class="group-count">3 punkty</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-czat"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="17"><span class="rule-n">17.</span><div><p>Zakazuje się wulgarnego zachowania na czacie.</p></div></li>
+              <li class="rule" data-n="18"><span class="rule-n">18.</span><div><p>Zakazuje się obrażania innych użytkowników oraz mniejszości narodowych.</p></div></li>
+              <li class="rule" data-n="20"><span class="rule-n">20.</span><div><p>Zakazuje się omijania cenzury na czacie.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 06 -->
+        <section class="group" id="g-reklama">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-reklama">
+              <span class="group-idx">06</span>
+              <span class="group-title">Reklama</span>
+              <span class="group-count">2 punkty</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-reklama"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="15"><span class="rule-n">15.</span><div><p>Zakazuje się reklamowania innych serwerów Discord, TeamSpeak 3 lub Minecraft.</p></div></li>
+              <li class="rule" data-n="16"><span class="rule-n">16.</span><div><p>Zakazuje się reklamowania treści niezwiązanych z serwerem qwertymcpl.aternos.me.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 07 -->
+        <section class="group" id="g-tworcy">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-tworcy">
+              <span class="group-idx">07</span>
+              <span class="group-title">Twórcy i transmisje</span>
+              <span class="group-count">3 punkty</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-tworcy"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="22"><span class="rule-n">22.</span><div><p>Zakazuje się tworzenia nicków podobnych do nicków twórców i wykorzystywania ich do oszustw.</p></div></li>
+              <li class="rule" data-n="23"><span class="rule-n">23.</span><div><p>Zakazuje się oszukiwania graczy w trakcie transmisji na żywo z naszego serwera.</p></div></li>
+              <li class="rule" data-n="24"><span class="rule-n">24.</span><div><p>Zabrania się streamsnipingu naszych twórców z serwera.</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <!-- 08 -->
+        <section class="group" id="g-admin">
+          <h3 class="group-h">
+            <button class="group-head" type="button" aria-expanded="false" aria-controls="p-admin">
+              <span class="group-idx">08</span>
+              <span class="group-title">Administracja i współpraca</span>
+              <span class="group-count">10 punktów</span>
+              <span class="group-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="group-body" id="p-admin"><div>
+            <ol class="rule-list">
+              <li class="rule" data-n="10"><span class="rule-n">10.</span><div><p>Zakazuje się celowego utrudniania rozgrywki administracji oraz innym graczom.</p></div></li>
+              <li class="rule" data-n="11"><span class="rule-n">11.</span><div><p>Komenda <code>/helpop</code> służy wyłącznie do zgłaszania istotnych spraw. Nadużywanie tej komendy jest zabronione.</p></div></li>
+              <li class="rule" data-n="12"><span class="rule-n">12.</span><div><p>Zakazuje się obrażania serwera oraz prowokowania administracji.</p></div></li>
+              <li class="rule" data-n="13"><span class="rule-n">13.</span><div><p>Zakazuje się wprowadzania administracji w błąd.</p></div></li>
+              <li class="rule" data-n="25"><span class="rule-n">25.</span><div><p>Zakazuje się współpracy z osobami łamiącymi regulamin.</p></div></li>
+              <li class="rule" data-n="26"><span class="rule-n">26.</span><div><p>Zakazuje się bezpodstawnego oczerniania administracji.</p></div></li>
+              <li class="rule" data-n="27"><span class="rule-n">27.</span><div><p>Gracz wezwany przez administratora na Discorda zobowiązany jest do współpracy i wykonywania poleceń.</p></div></li>
+              <li class="rule" data-n="28"><span class="rule-n">28.</span><div><p>Gracz jest zobowiązany do zgłaszania wszelkich nieprawidłowości związanych z innymi graczami lub serwerem.</p></div></li>
+              <li class="rule" data-n="34"><span class="rule-n">34.</span><div><p>Gracz musi słuchać poleceń administratora.</p></div></li>
+              <li class="rule" data-n="37"><span class="rule-n">37.</span><div><p>Zabrania się administracji brania itemów z gamemode 1 (właściciel może).</p></div></li>
+            </ol>
+          </div></div>
+        </section>
+
+        <p class="rules-empty" id="rules-empty" hidden>Brak wyników. Spróbuj innego słowa lub numeru punktu.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#start" aria-label="QWERTYMC — na górę strony">
+          <span class="brand-key" aria-hidden="true">Q</span>
+          <span class="brand-name">QWERTYMC</span>
+        </a>
+        <p>Polski serwer Minecraft 1.21.4.</p>
+      </div>
+
+      <div class="footer-ip">
+        <button class="ip ip--sm" type="button" data-copy="qwertymcpl.aternos.me" aria-label="Skopiuj adres IP serwera: qwertymcpl.aternos.me">
+          <span class="ip-face">
+            <span class="ip-text">
+              <span class="ip-label">IP serwera</span>
+              <span class="ip-addr">qwertymcpl.aternos.me</span>
+            </span>
+            <span class="ip-action">
+              <span class="ip-ico">
+                <svg class="ico-copy" aria-hidden="true"><use href="#i-copy"/></svg>
+                <svg class="ico-check" viewBox="0 0 24 24" aria-hidden="true"><path class="chk" d="M5 12.500l4.500 4.500L19 7.500" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="ip-action-text" data-idle="Kopiuj" data-done="Skopiowano">Kopiuj</span>
+            </span>
+          </span>
+        </button>
+      </div>
+
+      <div class="footer-links">
+        <a class="btn btn--ghost btn--sm" href="https://discord.gg/mRmsYtuV3n" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true"><use href="#i-discord"/></svg><span>Discord</span>
+        </a>
+        <ul>
+          <li><a href="#rangi">Rangi</a></li>
+          <li><a href="#sklep">Klucze i zestawy</a></li>
+          <li><a href="#regulamin">Regulamin</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="wordmark" aria-hidden="true">QWERTYMC</p>
+
+    <p class="legal">© <span id="year">2026</span> QWERTYMC. Serwer nie jest oficjalnym produktem Minecraft i nie jest powiązany z Mojang Studios ani Microsoft.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i aria-hidden="true"></i><span id="toast-text"></span></div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
